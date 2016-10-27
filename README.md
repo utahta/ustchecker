@@ -23,6 +23,10 @@ Usage of uststat:
 $ uststat -name iss-hdev-payload
 live
 ```
+```
+$ uststat -name momoclotv
+offline
+```
 
 ## Example
 
