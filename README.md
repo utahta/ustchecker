@@ -1,24 +1,26 @@
-# Ustream live status checker
+# Ustream live status
 
-[![Build Status](https://travis-ci.org/utahta/ustchecker.svg?branch=master)](https://travis-ci.org/utahta/ustchecker)
+[![Build Status](https://travis-ci.org/utahta/uststat.svg?branch=master)](https://travis-ci.org/utahta/uststat)
+
+Get the ustream live status.
 
 ## Installing
 
 ```
-$ go get -u github.com/utahta/ustchecker/cmd/ustchecker
+$ go get -u github.com/utahta/uststat/cmd/uststat
 ```
 
 ## Usage
 
 ```
-$ ustchecker -h
-Usage of ustchecker:
+$ uststat -h
+Usage of uststat:
   -name string
         Specifies the ustream channel name
 
 ```
 ```
-$ ustchecker -name iss-hdev-payload
+$ uststat -name iss-hdev-payload
 live
 ```
 
@@ -30,11 +32,11 @@ package main
 import (
 	"log"
 
-	"github.com/utahta/ustchecker"
+	"github.com/utahta/uststat"
 )
 
 func main() {
-	c, err := ustchecker.New()
+	c, err := uststat.New()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -50,7 +52,7 @@ func main() {
 
 ## Contributing
 
-1. Fork it ( https://github.com/utahta/ustchecker/fork )
+1. Fork it ( https://github.com/utahta/uststat/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

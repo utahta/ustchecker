@@ -1,4 +1,4 @@
-package ustchecker
+package uststat
 
 import (
 	"fmt"
@@ -37,7 +37,7 @@ func (t *mockTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 
 func TestClient_IsLiveByChannelID(t *testing.T) {
 	var (
-		c   *Checker
+		c   *Client
 		b   bool
 		err error
 	)

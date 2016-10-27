@@ -5,7 +5,7 @@ import (
 	"os"
 	"flag"
 
-	"github.com/utahta/ustchecker"
+	"github.com/utahta/uststat"
 )
 
 func main() {
@@ -24,7 +24,7 @@ func run() error {
 		return nil
 	}
 
-	c, err := ustchecker.New()
+	c, err := uststat.New()
 	if err != nil {
 		return err
 	}

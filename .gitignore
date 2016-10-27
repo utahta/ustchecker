@@ -27,4 +27,4 @@ _testmain.go
 .idea
 *.iml
 vendor
-ustchecker
+uststat

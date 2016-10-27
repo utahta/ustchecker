@@ -6,7 +6,7 @@ install:
 	@glide install
 
 build:
-	@go build ./cmd/ustchecker
+	@go build ./cmd/uststat
 
 fmt:
 	gofmt -w .

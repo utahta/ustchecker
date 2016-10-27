@@ -1,4 +1,4 @@
-package ustchecker
+package uststat
 
 import (
 	"encoding/json"
@@ -10,15 +10,15 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-type Checker struct {
+type Client struct {
 	httpClient *http.Client
 }
 
-type CheckerOption func(*Checker) error
+type ClientOption func(*Client) error
 
 // New ustream checker
-func New(options ...CheckerOption) (*Checker, error) {
-	c := &Checker{httpClient: http.DefaultClient}
+func New(options ...ClientOption) (*Client, error) {
+	c := &Client{httpClient: http.DefaultClient}
 
 	for _, option := range options {
 		if err := option(c); err != nil {
@@ -29,15 +29,15 @@ func New(options ...CheckerOption) (*Checker, error) {
 }
 
 // WithHTTPTransport function
-func WithHTTPTransport(t http.RoundTripper) CheckerOption {
-	return func(c *Checker) error {
+func WithHTTPTransport(t http.RoundTripper) ClientOption {
+	return func(c *Client) error {
 		c.httpClient.Transport = t
 		return nil
 	}
 }
 
 // Get ustream live status by channel name
-func (c *Checker) IsLive(name string) (bool, error) {
+func (c *Client) IsLive(name string) (bool, error) {
 	resp, err := c.httpClient.Get(fmt.Sprintf("http://www.ustream.tv/channel/%s", name))
 	if err != nil {
 		return false, err
@@ -56,7 +56,7 @@ func (c *Checker) IsLive(name string) (bool, error) {
 }
 
 // Get ustream live status by channel id
-func (c *Checker) IsLiveByChannelID(id string) (bool, error) {
+func (c *Client) IsLiveByChannelID(id string) (bool, error) {
 	resp, err := c.httpClient.Get(fmt.Sprintf("https://api.ustream.tv/channels/%s.json", id))
 	if err != nil {
 		return false, err
