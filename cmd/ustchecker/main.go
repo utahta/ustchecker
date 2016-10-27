@@ -19,6 +19,10 @@ func run() error {
 	var name string
 	flag.StringVar(&name, "name", "", "Specifies the ustream channel name")
 	flag.Parse()
+	if name == "" {
+		flag.Usage()
+		return nil
+	}
 
 	c, err := ustchecker.New()
 	if err != nil {
