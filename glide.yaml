@@ -1,0 +1,4 @@
+package: github.com/utahta/ustchecker
+import:
+- package: github.com/PuerkitoBio/goquery
+  version: ^1.0.1
