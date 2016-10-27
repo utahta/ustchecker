@@ -16,7 +16,7 @@ type Client struct {
 
 type ClientOption func(*Client) error
 
-// New ustream checker
+// New client
 func New(options ...ClientOption) (*Client, error) {
 	c := &Client{httpClient: http.DefaultClient}
 
