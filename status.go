@@ -1,13 +1,12 @@
 package uststat
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/mattn/go-scan"
 )
 
 type Client struct {
@@ -63,19 +62,9 @@ func (c *Client) IsLiveByChannelID(id string) (bool, error) {
 	}
 	defer resp.Body.Close()
 
-	content, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
+	var status string
+	if err := scan.ScanJSON(resp.Body, "/channel/status", &status); err != nil {
 		return false, err
 	}
-
-	var data interface{}
-	err = json.Unmarshal(content, &data)
-	if err != nil {
-		return false, err
-	}
-	root := data.(map[string]interface{})
-	channel := root["channel"].(map[string]interface{})
-	status := channel["status"].(string)
-
 	return status == "live", nil
 }
