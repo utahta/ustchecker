@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/utahta/uststat"
+	"github.com/utahta/ustream-live-status"
 )
 
 func main() {
