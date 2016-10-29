@@ -1,13 +1,13 @@
 # Ustream live status
 
-[![Build Status](https://travis-ci.org/utahta/uststat.svg?branch=master)](https://travis-ci.org/utahta/uststat)
+[![Build Status](https://travis-ci.org/utahta/ustream-live-status.svg?branch=master)](https://travis-ci.org/utahta/ustream-live-status)
 
 Get the ustream live status.
 
 ## Installing
 
 ```
-$ go get -u github.com/utahta/uststat/cmd/uststat
+$ go get -u github.com/utahta/ustream-live-status/cmd/uststat
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ package main
 import (
 	"log"
 
-	"github.com/utahta/uststat"
+	"github.com/utahta/ustream-live-status"
 )
 
 func main() {
